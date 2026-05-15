@@ -56,6 +56,36 @@
     display: flex; gap: 16px; margin-top: 10px; font-size: 12px; color: var(--text-light);
   }
   .briefing-stats span { background: var(--orange-bg); padding: 2px 8px; border-radius: 4px; }
+  /* AI 组织建设周报专属版块 */
+  .weekly-section {
+    background: linear-gradient(135deg, #FFF8F0 0%, #FFF0E0 100%);
+    border: 1.5px solid #FFD4B8; border-radius: 18px;
+    padding: 22px 22px 18px; margin-bottom: 32px;
+  }
+  .weekly-section .section-title {
+    font-size: 16px; color: var(--orange); margin-bottom: 4px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .weekly-section .section-sub {
+    font-size: 12px; color: var(--text-light); margin-bottom: 14px;
+  }
+  .weekly-card {
+    display: block; text-decoration: none; color: var(--text);
+    background: var(--white); border: 1px solid #FFD4B8; border-radius: 12px;
+    padding: 18px; margin-bottom: 10px;
+    transition: all 0.2s ease;
+  }
+  .weekly-card:hover {
+    box-shadow: 0 4px 16px rgba(255,102,17,0.12); transform: translateY(-2px);
+  }
+  .weekly-week { font-size: 18px; font-weight: 700; color: var(--orange); }
+  .weekly-range { font-size: 13px; color: var(--text-light); margin-left: 8px; }
+  .weekly-summary { font-size: 13.5px; color: var(--text-secondary); margin-top: 6px; }
+  .weekly-stats {
+    display: flex; gap: 10px; margin-top: 10px; font-size: 12px; color: var(--text-light);
+    flex-wrap: wrap;
+  }
+  .weekly-stats span { background: #FFF5EE; padding: 2px 8px; border-radius: 4px; }
   .subscribe-box {
     background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
     border-radius: 14px; padding: 28px 24px; margin-bottom: 32px; text-align: center;
@@ -93,6 +123,25 @@
 </div>
 
 <div class="container">
+
+  <!-- ════ AI 组织建设周报（专属版块） ════ -->
+  <div class="weekly-section">
+    <div class="section-title">🏛️ AI 组织建设周报</div>
+    <div class="section-sub">每周五一期 · 公司怎么把 AI 变成组织能力 · 给老板的输入 + day job 研究素材</div>
+
+    <a class="weekly-card" href="briefings/build-ai-org/2026-W20.html">
+      <span class="weekly-week">2026 · W20</span>
+      <span class="weekly-range">5 月 9 - 15 日</span>
+      <div class="weekly-summary">Citi 4000 AI Accelerators 70% 采纳 · Shopify Tobi memo 360 review · Box "AI 红利再投资" · Klarna 反转 · Duolingo 撤回 AI 绩效绑定 · Fortune 500 中 40% 设 CAIO</div>
+      <div class="weekly-stats">
+        <span>5 个关键案例</span>
+        <span>4 条方法论</span>
+        <span>8 个量化指标</span>
+        <span>3 条滴滴启示</span>
+      </div>
+    </a>
+  </div>
+
   <div class="section-title">历史日报</div>
 
   <a class="briefing-card" href="briefings/2026-05-12.html">

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 组织建设周报 — 2026.W20</title>
+<style>
+  :root {
+    --orange: #FF6611;
+    --orange-light: #FF8844;
+    --orange-bg: #FFF5EE;
+    --orange-bg2: #FFECE0;
+    --bg: #FAFAFA;
+    --white: #FFFFFF;
+    --text: #1A1A1A;
+    --text-secondary: #555555;
+    --text-light: #888888;
+    --border: #F0E8E2;
+    --shadow: 0 2px 12px rgba(255,102,17,0.06);
+    --didi-red: #C00;
+    --didi-red-bg: #FFEDED;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .header {
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+    color: #fff; padding: 48px 24px 36px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .header::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+    height: 24px; background: var(--bg); border-radius: 24px 24px 0 0;
+  }
+  .header-label {
+    display: inline-block; font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    background: rgba(255,255,255,0.2); border-radius: 20px; padding: 4px 16px; margin-bottom: 14px;
+  }
+  .header h1 { font-size: 26px; font-weight: 700; }
+  .header .date { font-size: 14px; opacity: 0.85; margin-top: 6px; }
+  .header .sub { font-size: 13px; opacity: 0.7; margin-top: 4px; max-width: 540px; margin-left: auto; margin-right: auto; }
+  .stats {
+    display: flex; justify-content: center; gap: 16px; padding: 24px 16px 8px;
+    max-width: 700px; margin: 0 auto; flex-wrap: wrap;
+  }
+  .stat {
+    background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+    padding: 12px 20px; text-align: center; flex: 1; min-width: 80px; box-shadow: var(--shadow);
+  }
+  .stat-num { font-size: 24px; font-weight: 700; color: var(--orange); }
+  .stat-label { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+  .nav-bar {
+    display: flex; justify-content: center; gap: 8px; padding: 12px 20px;
+    position: sticky; top: 0; z-index: 100; background: var(--bg);
+    border-bottom: 1px solid var(--border); flex-wrap: wrap;
+  }
+  .nav-pill {
+    padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border);
+    background: var(--white); color: var(--text-light); font-size: 13px;
+    cursor: pointer; transition: all 0.25s ease; text-decoration: none; white-space: nowrap;
+  }
+  .nav-pill:hover { border-color: var(--orange); color: var(--orange); }
+  .nav-pill.active { background: var(--orange); border-color: var(--orange); color: #fff; }
+  .container { max-width: 760px; margin: 0 auto; padding: 16px 20px 60px; }
+  .section { margin-top: 36px; }
+  .section-header {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 2px solid var(--orange);
+  }
+  .section-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;
+  }
+  .section-header h2 { font-size: 18px; font-weight: 600; }
+  .section-header .count {
+    margin-left: auto; font-size: 12px; color: var(--text-light);
+    background: var(--orange-bg); padding: 2px 10px; border-radius: 10px;
+  }
+  .card {
+    background: var(--white); border: 1px solid var(--border); border-radius: 14px;
+    padding: 22px; margin-bottom: 14px; box-shadow: var(--shadow);
+    transition: all 0.2s ease; cursor: pointer; position: relative;
+  }
+  .card:hover { box-shadow: 0 4px 20px rgba(255,102,17,0.1); border-color: #FFD4B8; }
+  .card-num {
+    position: absolute; top: 18px; right: 18px; font-size: 13px; font-weight: 700;
+    color: var(--orange); background: var(--orange-bg);
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .card-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; padding-right: 40px; }
+  .card-sub { font-size: 12px; color: var(--text-light); margin-bottom: 12px; }
+  .field-grid {
+    display: grid; grid-template-columns: 110px 1fr; gap: 8px 14px;
+    font-size: 13.5px; margin-bottom: 8px;
+  }
+  .field-key { color: var(--text-light); font-weight: 600; padding-top: 2px; }
+  .field-val { color: var(--text-secondary); }
+  .rating { color: var(--orange); letter-spacing: 1px; font-size: 12px; }
+  .source-link {
+    display: inline-flex; align-items: center; font-size: 12px; color: var(--orange);
+    text-decoration: none; background: var(--orange-bg); border-radius: 6px;
+    padding: 3px 10px; transition: background 0.2s; margin-right: 6px; margin-top: 6px;
+  }
+  .source-link:hover { background: var(--orange-bg2); }
+  .company-tag {
+    display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px;
+    font-weight: 600; margin-bottom: 8px; margin-right: 4px;
+  }
+  .tag-citi { background: #E3F2FD; color: #003B71; }
+  .tag-shopify { background: #E8F5E9; color: #5A8F2C; }
+  .tag-box { background: #E1F0FF; color: #0061D5; }
+  .tag-klarna { background: #FFE4F1; color: #FFA8CD; }
+  .tag-duolingo { background: #E1FBEF; color: #58CC02; }
+  .tag-meta { background: #E7F3FF; color: #0064E0; }
+  .tag-china { background: #FFF8E1; color: #D4A000; border: 1px solid #FFD84D; }
+  .implication {
+    margin-top: 14px; overflow: hidden; max-height: 0; opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+    background: var(--didi-red-bg); border-radius: 10px; padding: 0 16px;
+    border-left: 3px solid var(--didi-red);
+  }
+  .card.open .implication { max-height: 360px; opacity: 1; padding: 14px 16px; margin-top: 14px; }
+  .implication-label {
+    font-size: 11px; font-weight: 700; color: var(--didi-red);
+    margin-bottom: 6px; letter-spacing: 1.5px;
+  }
+  .implication-text { font-size: 13.5px; color: var(--text-secondary); line-height: 1.7; }
+  .toggle-hint { font-size: 12px; color: var(--text-light); text-align: right; margin-top: 8px; }
+  .note-card {
+    background: var(--orange-bg); border-left: 3px solid var(--orange);
+    border-radius: 0 10px 10px 0; padding: 14px 18px; margin-bottom: 10px;
+    font-size: 14px; color: var(--text-secondary);
+  }
+  .note-card strong { color: var(--text); }
+  .tool-table, .metric-table {
+    width: 100%; border-collapse: collapse; background: var(--white);
+    border-radius: 12px; overflow: hidden; box-shadow: var(--shadow);
+    font-size: 13px; margin-bottom: 14px;
+  }
+  .tool-table th, .metric-table th {
+    background: var(--orange-bg); color: var(--text); padding: 10px 14px;
+    text-align: left; font-weight: 600; font-size: 12px;
+  }
+  .tool-table td, .metric-table td {
+    padding: 10px 14px; border-top: 1px solid var(--border); color: var(--text-secondary);
+    vertical-align: top;
+  }
+  .metric-num { font-weight: 700; color: var(--orange); white-space: nowrap; }
+  .verdict {
+    background: linear-gradient(135deg, var(--didi-red-bg) 0%, #FFF5F5 100%);
+    border: 2px solid #FFC8C8; border-radius: 16px; padding: 24px; margin-top: 12px;
+  }
+  .verdict h3 { font-size: 16px; color: var(--didi-red); margin-bottom: 10px; }
+  .verdict p { font-size: 14px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.75; }
+  .verdict .highlight { color: var(--didi-red); font-weight: 600; }
+  .action-item {
+    background: var(--white); border-radius: 10px; padding: 14px 16px;
+    margin-top: 10px; border-left: 3px solid var(--didi-red);
+  }
+  .action-item p { margin: 0; font-size: 14px; color: var(--text); line-height: 1.7; }
+  .action-num { color: var(--didi-red); font-weight: 700; margin-right: 4px; }
+  .back-link {
+    position: absolute; top: 16px; left: 16px; z-index: 10;
+    color: rgba(255,255,255,0.85); font-size: 14px; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 4px;
+    background: rgba(255,255,255,0.15); border-radius: 20px; padding: 6px 14px;
+    transition: background 0.2s;
+  }
+  .back-link:hover { background: rgba(255,255,255,0.3); }
+  .footer {
+    text-align: center; padding: 32px 24px; font-size: 12px;
+    color: var(--text-light); border-top: 1px solid var(--border); margin-top: 20px;
+  }
+  @media (max-width: 500px) {
+    .header h1 { font-size: 21px; }
+    .card { padding: 18px; }
+    .stat { padding: 10px 12px; }
+    .stat-num { font-size: 20px; }
+    .field-grid { grid-template-columns: 90px 1fr; gap: 6px 10px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a class="back-link" href="../../index.html">← 全部周报</a>
+  <div class="header-label">Build AI Organization · W20</div>
+  <h1>AI 组织建设周报</h1>
+  <div class="date">2026 年第 20 周 · 5 月 9 日 — 5 月 15 日</div>
+  <div class="sub">本周报跟踪非 AI 原生公司如何把 AI 变成组织能力——CEO 推动、Champion 网络、工具铺开、培训机制、工作流改造、量化效果。给老板的输入 + 给自己 day job 的研究素材。</div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">关键案例</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">方法论碎片</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">量化指标</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">滴滴启示</div></div>
+</div>
+
+<div class="nav-bar">
+  <a class="nav-pill active" href="#sec-cases" data-target="sec-cases">🏛️ 关键案例</a>
+  <a class="nav-pill" href="#sec-methods" data-target="sec-methods">📐 方法论</a>
+  <a class="nav-pill" href="#sec-tools" data-target="sec-tools">🛠️ 工具铺开</a>
+  <a class="nav-pill" href="#sec-metrics" data-target="sec-metrics">📊 量化速查</a>
+  <a class="nav-pill" href="#sec-didi" data-target="sec-didi">🎯 对滴滴启示</a>
+</div>
+
+<div class="container">
+
+  <!-- ════ Section 1: 关键案例 ════ -->
+  <div class="section" id="sec-cases">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--orange-bg)">🏛️</div>
+      <h2>本周关键案例</h2>
+      <span class="count">5 家</span>
+    </div>
+
+    <!-- Case 1: Citi -->
+    <div class="card" onclick="this.classList.toggle('open')">
+      <div class="card-num">1</div>
+      <span class="company-tag tag-citi">Citigroup</span>
+      <div class="card-title">Citi 的 4000 人 AI Accelerator 网络：金融监管行业最大的内部 Champion 实验</div>
+      <div class="card-sub">两年内从 0 建到 4,000 名 AI Accelerator + 25-30 名 AI Champion，覆盖 84 国 18.2 万员工，70%+ 用上了公司批准的 AI 工具。</div>
+
+      <div class="field-grid">
+        <div class="field-key">公司 / 规模 / 行业</div>
+        <div class="field-val">Citigroup / 18.2 万员工 / 银行 · 强监管</div>
+        <div class="field-key">时间点</div>
+        <div class="field-val">2024 启动 → 2025-2026 规模化；2025 年 10 月起追加 17.5 万人强制 prompt 培训</div>
+        <div class="field-key">推动力来源</div>
+        <div class="field-val"><strong>CEO Jane Fraser 顶层 push</strong> + 业务侧自愿报名当 Accelerator</div>
+        <div class="field-key">具体做法</div>
+        <div class="field-val">① 招募志愿者当 AI Accelerator（原计划 2500，实际超员到 4000 仍有 waitlist）<br>② 设 25-30 名 AI Champion 作为 Accelerator 的导师层<br>③ Accelerator 提前拿到工具早期版本 + 内部资源<br>④ 让 Accelerator 教邻座、收集反馈反哺工具改进<br>⑤ 单独对 17.5 万人推 prompt 培训（"great prompting vs basic prompting"）</div>
+        <div class="field-key">工具栈</div>
+        <div class="field-val">公司批准的 AI 工具集（具体未公开）+ 内部培训资源</div>
+        <div class="field-key">量化效果</div>
+        <div class="field-val">70%+ 员工用上批准的 AI 工具（即 ≥12.7 万人）；2 年时间从 0 到 4000 志愿者网络</div>
+        <div class="field-key">教训 / 局限</div>
+        <div class="field-val">Accelerator 是<strong>志愿制 + 兼职</strong>，不脱离原岗位——意味着核心动力是个人成长，不是绩效硬挂钩</div>
+        <div class="field-key">滴滴可借鉴度</div>
+        <div class="field-val"><span class="rating">★★★★★</span> 强相关性——金融业强监管 + 多国部署 + 18 万员工，跟滴滴跨拉美多国的约束高度相似</div>
+      </div>
+
+      <div class="card-meta">
+        <a class="source-link" href="https://www.artificialintelligence-news.com/news/the-quiet-work-behind-citi-4000-person-internal-ai-rollout/" target="_blank">AI News ↗</a>
+        <a class="source-link" href="https://fortune.com/2025/10/01/citi-ai-prompt-training-mandate-employees-reskilling-workforce-business/" target="_blank">Fortune ↗</a>
+        <a class="source-link" href="https://www.thehrdigest.com/a-team-of-ai-accelerators-at-citi-is-redefining-ai-adoption-in-the-workplace/" target="_blank">HR Digest ↗</a>
+      </div>
+
+      <div class="implication">
+        <div class="implication-label">对滴滴的启示</div>
+        <div class="implication-text">
+          Citi 模型是<strong>滴滴 AI Champion 虚拟组织最直接的参照</strong>，但要注意三点：① <strong>志愿制是关键</strong>——Citi 没用绩效绑定，靠"提前用上工具 + 培训资源"作为隐性激励；② <strong>金字塔双层结构</strong>（25-30 Champion + 4000 Accelerator）值得借鉴，比扁平的"几百个 Champion"更可管理；③ Citi 跨 84 国——多语言/多法域的运营经验对拉美多国部署直接复用。
+        </div>
+      </div>
+      <div class="toggle-hint">▼ 点击展开"对滴滴的启示"</div>
+    </div>
+
+    <!-- Case 2: Shopify -->
+    <div class="card" onclick="this.classList.toggle('open')">
+      <div class="card-num">2</div>
+      <span class="company-tag tag-shopify">Shopify</span>
+      <div class="card-title">Shopify Tobi Lütke memo：把 AI 写进绩效 360 评估，"先证明 AI 干不了，再申请扩编"</div>
+      <div class="card-sub">2025 年 4 月发出"Reflexive AI Usage is now a baseline expectation at Shopify"全员 memo，已成 AI-first memo 的范式之作，被 Box / Fiverr / 加拿大总理共同模仿。</div>
+
+      <div class="field-grid">
+        <div class="field-key">公司 / 规模 / 行业</div>
+        <div class="field-val">Shopify / ~8000 员工 / 电商 SaaS</div>
+        <div class="field-key">时间点</div>
+        <div class="field-val">2025 年 4 月 memo 发布；2025-2026 持续落实</div>
+        <div class="field-key">推动力来源</div>
+        <div class="field-val"><strong>CEO Tobi Lütke 一封 memo + Twitter 公开</strong>——顶层强 push</div>
+        <div class="field-key">具体做法</div>
+        <div class="field-val">① "Reflexive AI usage = baseline expectation" 写进员工预期<br>② 申请扩编/招人前，必须证明 AI 做不到<br>③ 360 评估加 "AI native / AI reflexive" 评分维度<br>④ 高管层 demo "AI 探索"——给团队示范上限<br>⑤ 自建 Solution Engineer Agent（含引用溯源）</div>
+        <div class="field-key">工具栈</div>
+        <div class="field-val">未完整公开；内部 AI Agent 平台 + 外部商用工具</div>
+        <div class="field-key">量化效果</div>
+        <div class="field-val">工程师 pair programming 影响力正相关 AI 工具使用（具体百分比未公开）</div>
+        <div class="field-key">教训 / 局限</div>
+        <div class="field-val">memo 在硅谷被赞，<strong>在媒体上有反弹</strong>——Forrester 等点出"过于强调 AI 替代而非协作"，Klarna 用类似思路后撞墙</div>
+        <div class="field-key">滴滴可借鉴度</div>
+        <div class="field-val"><span class="rating">★★★★</span> 高——memo + 360 review 评分机制立即可移植；但要避开 Shopify 的"先证明 AI 干不了"措辞，改成"AI 协同优先"</div>
+      </div>
+
+      <div class="card-meta">
+        <a class="source-link" href="https://x.com/tobi/status/1909251946235437514" target="_blank">原 Tweet ↗</a>
+        <a class="source-link" href="https://www.firstround.com/ai/shopify" target="_blank">First Round ↗</a>
+        <a class="source-link" href="https://raganconsulting.com/analyzing-tobias-lutkes-artificial-intelligence-memo-ai/" target="_blank">Memo 分析 ↗</a>
+      </div>
+
+      <div class="implication">
+        <div class="implication-label">对滴滴的启示</div>
+        <div class="implication-text">
+          Shopify 的<strong>"360 评估加 AI 评分维度"</strong>是低成本高杠杆的动作——不用改组织架构、不用招人，把"AI 用得怎么样"做成同事互评的一个问题，全员立刻在意。但<strong>不要复制"先证明 AI 干不了再招人"措辞</strong>——这在公关上风险大，Klarna 已经吃了亏。滴滴版可以是："如果你要解决 X 问题，请先思考 AI 协同方案，再考虑加人"。
+        </div>
+      </div>
+      <div class="toggle-hint">▼ 点击展开"对滴滴的启示"</div>
+    </div>
+
+    <!-- Case 3: Box -->
+    <div class="card" onclick="this.classList.toggle('open')">
+      <div class="card-num">3</div>
+      <span class="company-tag tag-box">Box</span>
+      <div class="card-title">Box 的反向思路："AI 不取代人，AI 的产出红利再投资给团队"</div>
+      <div class="card-sub">在 Shopify / Duolingo / Klarna "AI-first 取代论"流派之外，Box 走的是"AI-augmented 复利"——用 AI 的人不会被裁员，反而获得更多资源。这条路径正在显得更可持续。</div>
+
+      <div class="field-grid">
+        <div class="field-key">公司 / 规模 / 行业</div>
+        <div class="field-val">Box / ~3000 员工 / 企业云存储 SaaS</div>
+        <div class="field-key">时间点</div>
+        <div class="field-val">2025-2026 持续路径</div>
+        <div class="field-key">推动力来源</div>
+        <div class="field-val">CEO Aaron Levie 个人在 X 长期发声 + 内部 AI 产品策略并行</div>
+        <div class="field-key">具体做法</div>
+        <div class="field-val">① AI 不替代角色，而是放大现有角色的产出能力<br>② <strong>"AI 红利再投资"</strong>——团队用 AI 提产，省下的人天给团队加预算 / 加 headcount，而不是减<br>③ 强化"用 AI 的团队 = 优先获资源"的正反馈</div>
+        <div class="field-key">工具栈</div>
+        <div class="field-val">Box 自家 AI 产品（Box AI）+ Copilot/Cursor 等通用工具</div>
+        <div class="field-key">量化效果</div>
+        <div class="field-val">未公开具体数字；CEO 公开案例为"运维和支持团队用 AI 后接更多客户而非裁员"</div>
+        <div class="field-key">教训 / 局限</div>
+        <div class="field-val">需要公司本身在<strong>增长期</strong>——如果业务停滞，"再投资"的循环跑不动</div>
+        <div class="field-key">滴滴可借鉴度</div>
+        <div class="field-val"><span class="rating">★★★★</span> 高——拉美外卖是增长期业务，"AI 红利再投资"机制适配；文化上比 Shopify 的"先证明 AI 干不了"更温和</div>
+      </div>
+
+      <div class="card-meta">
+        <a class="source-link" href="https://www.anderssorman-nilsson.com/blog/ai-keynote-speaker-think-ai-first-not-ai-only-what-duolingo-shopify-box-and-klarna-teach-us-about-ai-workflow-strategy-in-2026" target="_blank">AI-First vs AI-Only 分析 ↗</a>
+      </div>
+
+      <div class="implication">
+        <div class="implication-label">对滴滴的启示</div>
+        <div class="implication-text">
+          Box 路径跟<strong>拉美外卖增长期</strong>的契合度最高——AI 不是来降本的，是来让团队接得动更多商家/订单的。这个故事在内部沟通时比"Shopify-Klarna 路线"更顺：员工不会感到 AI 是威胁，而是"我的工具升级了"。<strong>建议把"AI 红利再投资"作为滴滴 AI 组织的明面叙事</strong>，跟"AI Champion 提前用上工具"形成激励双轨。
+        </div>
+      </div>
+      <div class="toggle-hint">▼ 点击展开"对滴滴的启示"</div>
+    </div>
+
+    <!-- Case 4: Klarna -->
+    <div class="card" onclick="this.classList.toggle('open')">
+      <div class="card-num">4</div>
+      <span class="company-tag tag-klarna">Klarna</span>
+      <div class="card-title">Klarna 大反转：AI 替代 700 客服 → 一年后承认"质量下降" → 重新招人</div>
+      <div class="card-sub">2024-2025 年 AI-first 激进路线（招聘冻结 + 40% 裁员 + AI chatbot 处理百万对话）一度成为模板。2025 年底 CEO 公开承认"成本主导导致质量下降"，启动回滚——目前最重要的反面案例。</div>
+
+      <div class="field-grid">
+        <div class="field-key">公司 / 规模 / 行业</div>
+        <div class="field-val">Klarna / 缩编前 ~5000 / Fintech BNPL</div>
+        <div class="field-key">时间点</div>
+        <div class="field-val">2024 启动 AI-first → 2025 Q3 反转</div>
+        <div class="field-key">推动力来源</div>
+        <div class="field-val">CEO Sebastian Siemiatkowski 强 push（IPO 前的降本叙事）</div>
+        <div class="field-key">具体做法（反面）</div>
+        <div class="field-val">① 全员招聘冻结<br>② AI 客服 chatbot 替换 ~700 客服岗<br>③ AI-first 公开宣讲 + 投资者沟通<br>④ <strong>2025 Q3 反转</strong>：CEO 承认"成本太主导"、"质量下降"，开始重新招人</div>
+        <div class="field-key">工具栈</div>
+        <div class="field-val">AI chatbot（细节未完全公开）+ 内部 LLM 集成</div>
+        <div class="field-key">量化效果</div>
+        <div class="field-val">短期：每客服成本下降；长期：客户满意度和质量下滑（具体百分比未公开）</div>
+        <div class="field-key">教训 / 局限</div>
+        <div class="field-val"><strong>把 AI 当替代工具的成本中心叙事不可持续</strong>——一旦客户体验出问题、增长被影响，"省下的钱"还得吐回去。最重要的反面教材</div>
+        <div class="field-key">滴滴可借鉴度</div>
+        <div class="field-val"><span class="rating">★★★</span> 反面参照——必看，避免重蹈覆辙</div>
+      </div>
+
+      <div class="card-meta">
+        <a class="source-link" href="https://www.flexos.work/learn/klarna-replaces-700-roles-ai-leaders-approach-ai-workforce-planning" target="_blank">FlexOS 分析 ↗</a>
+        <a class="source-link" href="https://blog.pragmaticengineer.com/klarnas-ai-chatbot/" target="_blank">Pragmatic Engineer ↗</a>
+        <a class="source-link" href="https://www.computerweekly.com/news/366634565/Artificial-intelligence-helps-Klarna-double-revenues-with-half-the-staff" target="_blank">ComputerWeekly ↗</a>
+      </div>
+
+      <div class="implication">
+        <div class="implication-label">对滴滴的启示</div>
+        <div class="implication-text">
+          Klarna 给滴滴的教训非常直接：<strong>AI 替代人的故事在投资人面前好讲，在用户面前会出事</strong>。滴滴外卖客服如果走 Klarna 路径，拉美用户对低质量服务的容忍度很低（参考 Rappi 的 WhatsApp 用户体验问题），反弹会更快。<strong>建议在内部 AI 叙事里明确"AI 不裁员"</strong>——这跟 Box 路径吻合，比 Shopify 路径稳。
+        </div>
+      </div>
+      <div class="toggle-hint">▼ 点击展开"对滴滴的启示"</div>
+    </div>
+
+    <!-- Case 5: Duolingo -->
+    <div class="card" onclick="this.classList.toggle('open')">
+      <div class="card-num">5</div>
+      <span class="company-tag tag-duolingo">Duolingo</span>
+      <div class="card-title">Duolingo 撤回 AI 绩效考核：CEO 承认"措辞不够 context"，停止把 AI 用量绑进 KPI</div>
+      <div class="card-sub">2025 年发布"AI usage 作为绩效评估指标"的 memo 后被员工反弹。2026 年 4 月撤回——绑定式 AI 推行的关键警示。</div>
+
+      <div class="field-grid">
+        <div class="field-key">公司 / 规模 / 行业</div>
+        <div class="field-val">Duolingo / ~830 员工 / EdTech</div>
+        <div class="field-key">时间点</div>
+        <div class="field-val">2025 年发 memo → 2025-08 CEO 道歉 → 2026-04 正式撤回 AI 用量绩效绑定</div>
+        <div class="field-key">推动力来源</div>
+        <div class="field-val">CEO Luis von Ahn → 反弹后调整</div>
+        <div class="field-key">具体做法（反弹路径）</div>
+        <div class="field-val">① 跟 Shopify 学："AI usage 进入绩效评估"<br>② <strong>员工反弹 + 媒体批评</strong>——感受到威胁、不情愿采用<br>③ 2025 Q3：CEO 公开承认 memo "没给够 context"<br>④ 2026 Q2：彻底撤回 AI 用量考核绑定</div>
+        <div class="field-key">工具栈</div>
+        <div class="field-val">未公开内部具体工具</div>
+        <div class="field-key">量化效果</div>
+        <div class="field-val">未公开；从外部看是<strong>情感伤害大于产能提升</strong></div>
+        <div class="field-key">教训 / 局限</div>
+        <div class="field-val">"AI usage 写进 KPI 量化考核"是 Shopify memo 之后最常被效仿的动作，<strong>也是最容易引爆员工反弹的动作</strong>。把"AI 工具用得多少次"作为绩效指标本身就跟 AI 的价值观（结果驱动）矛盾</div>
+        <div class="field-key">滴滴可借鉴度</div>
+        <div class="field-val"><span class="rating">★★★</span> 反面参照——不要做的清单</div>
+      </div>
+
+      <div class="card-meta">
+        <a class="source-link" href="https://fortune.com/2026/04/13/duolingo-ceo-luis-von-ahn-ai-usage-requirement-employee-performance-evaluations/" target="_blank">Fortune 撤回报道 ↗</a>
+        <a class="source-link" href="https://fortune.com/2025/08/18/duolingo-ceo-admits-controversial-ai-memo-did-not-give-enough-context-insists-company-never-laid-off-full-time-employees/" target="_blank">CEO 道歉 ↗</a>
+        <a class="source-link" href="https://www.resultsense.com/news/2026-04-20-duolingo-drops-ai-performance-tracking" target="_blank">ResultSense 复盘 ↗</a>
+      </div>
+
+      <div class="implication">
+        <div class="implication-label">对滴滴的启示</div>
+        <div class="implication-text">
+          Duolingo + Klarna 给出了相同的方向性教训：<strong>不要把 AI 工具采用度直接绑进 KPI / 招聘冻结 / 裁员</strong>。Shopify 的 360 review 评 "AI native" 已经是这条边的极限——再往前就是 Duolingo 的反弹。<strong>滴滴 AI Champion 的激励设计应该用"提前用上工具 + 培训资源 + 内部影响力"这种 Citi 式正向激励，而非"用得少扣绩效"的负向考核</strong>。
+        </div>
+      </div>
+      <div class="toggle-hint">▼ 点击展开"对滴滴的启示"</div>
+    </div>
+  </div>
+
+  <!-- ════ Section 2: 方法论碎片 ════ -->
+  <div class="section" id="sec-methods">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--orange-bg)">📐</div>
+      <h2>方法论碎片</h2>
+      <span class="count">4 条</span>
+    </div>
+
+    <div class="note-card">
+      <strong>① "AI-first" 不等于 "AI-only"</strong>——Shopify / Duolingo / Klarna 都是"AI-first → 替代视角"，Box 是"AI-first → 复利视角"。2026 年的复盘正在让市场倾向于 Box 路径：业务在长跑时，可持续性比短期降本更值钱。
+    </div>
+
+    <div class="note-card">
+      <strong>② "People copy people"——peer-to-peer 比 IT 强推有效</strong>——Citi 内部数据显示，AI 工具采纳率最高的不是培训最多的部门，而是<strong>身边同事先用起来的部门</strong>。Champion 网络的真正价值不是教学，是"<strong>降低社会风险</strong>"——让大家看到同事在用，自己用就不奇怪了。
+      <a class="source-link" href="https://www.leadwithai.co/article/people-copy-people-ai-adoption-scales-socially" target="_blank">Lead with AI 分析 ↗</a>
+    </div>
+
+    <div class="note-card">
+      <strong>③ Champion 比例 1:15-20 是黄金区间</strong>——业界经验值：每 15-20 个员工配 1 名 Champion。Citi 的 4000 : 182000 ≈ 1:46（金融业更分散），但 Citi 在 Champion 之上还有 25-30 名核心 Champion 兜底——双层结构。50 人小团队建议 3 个 Champion 起步。
+      <a class="source-link" href="https://www.hartzai.com/ai-champion-programs" target="_blank">Hartz AI Guide ↗</a>
+    </div>
+
+    <div class="note-card">
+      <strong>④ 12 周三阶段是常见培训节奏</strong>——周 1-4 学习（密集 AI 培训）、周 5-8 应用（Champion 在自己部门搭 AI workflow）、周 9-12 输出（Champion 开始教邻座）。这套节奏比"一次性 onboarding 培训"留存率高得多。
+    </div>
+  </div>
+
+  <!-- ════ Section 3: 工具铺开实录 ════ -->
+  <div class="section" id="sec-tools">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--orange-bg)">🛠️</div>
+      <h2>工具铺开实录</h2>
+      <span class="count">2026 数据</span>
+    </div>
+
+    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 12px;">本周看到的最完整的工具采纳数据来自 Pragmatic Engineer 的 "AI Tooling for Software Engineers in 2026" 综述。要点：</p>
+
+    <table class="tool-table">
+      <thead>
+        <tr>
+          <th>工具</th>
+          <th>2026 企业采纳</th>
+          <th>定位</th>
+          <th>备注</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>GitHub Copilot</strong></td>
+          <td class="metric-num">4.7M 付费用户<br>YoY +75%</td>
+          <td>"autocomplete 基线"<br>企业全员铺开</td>
+          <td>Fortune 100 中 ~90% 有 Copilot 足迹；29% 开发者把它当首选；但"most loved" 投票只有 9%</td>
+        </tr>
+        <tr>
+          <td><strong>Claude Code</strong></td>
+          <td class="metric-num">发布 8 个月成为<br>最常用工具</td>
+          <td>"高杠杆 agentic 工作"<br>自下而上被 Senior 工程师采纳</td>
+          <td>46% "most loved"——情感占有率第一；但企业铺开率还在追 Copilot</td>
+        </tr>
+        <tr>
+          <td><strong>Cursor</strong></td>
+          <td class="metric-num">Fortune 500 中<br>>50% 有用户</td>
+          <td>"AI-first IDE"<br>常用于 Senior 工程师 / startup</td>
+          <td>2025-06 Series C 时数据；2026 持续增长</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note-card">
+      <strong>2026 工程团队 AI 工具采纳格局</strong>：73% 工程团队报告"<strong>每天用</strong>" AI 编程工具（两年前是 18%）。个人开发者中 84% 在用或计划用。<strong>平均每周节省 3.6 小时</strong>——其中 ~90% 至少省 1 小时，20% 省 8+ 小时。
+      <a class="source-link" href="https://newsletter.pragmaticengineer.com/p/ai-tooling-2026" target="_blank">Pragmatic Engineer ↗</a>
+      <a class="source-link" href="https://www.kore1.com/ai-copilot-developer-productivity-2026/" target="_blank">KORE1 ↗</a>
+    </div>
+  </div>
+
+  <!-- ════ Section 4: 量化效果速查 ════ -->
+  <div class="section" id="sec-metrics">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--orange-bg)">📊</div>
+      <h2>量化效果速查</h2>
+      <span class="count">8 个数字</span>
+    </div>
+
+    <table class="metric-table">
+      <thead>
+        <tr>
+          <th>公司 / 来源</th>
+          <th>指标</th>
+          <th>数字</th>
+          <th>来源</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Citigroup</td>
+          <td>员工用上批准 AI 工具的比例</td>
+          <td class="metric-num">70%+ / 18.2 万人</td>
+          <td><a class="source-link" href="https://www.artificialintelligence-news.com/news/the-quiet-work-behind-citi-4000-person-internal-ai-rollout/" target="_blank">AI News</a></td>
+        </tr>
+        <tr>
+          <td>Citigroup</td>
+          <td>AI Accelerator 志愿者数量</td>
+          <td class="metric-num">4000 人（含 waitlist）</td>
+          <td><a class="source-link" href="https://www.thehrdigest.com/a-team-of-ai-accelerators-at-citi-is-redefining-ai-adoption-in-the-workplace/" target="_blank">HR Digest</a></td>
+        </tr>
+        <tr>
+          <td>Fortune 500 (Aaron D'silva)</td>
+          <td>设立 CAIO（Chief AI Officer）的公司比例</td>
+          <td class="metric-num">40% (2026)<br>↑ 从 26% (2025)</td>
+          <td><a class="source-link" href="https://aarondsilva.me/blog/chief-ai-officer-rise-organizational-models/" target="_blank">AarOnD'silva</a></td>
+        </tr>
+        <tr>
+          <td>GitHub Copilot</td>
+          <td>付费订阅</td>
+          <td class="metric-num">4.7M / YoY +75%</td>
+          <td><a class="source-link" href="https://www.cosmicjs.com/blog/claude-code-vs-github-copilot-vs-cursor-which-ai-coding-agent-should-you-use-2026" target="_blank">Cosmic JS</a></td>
+        </tr>
+        <tr>
+          <td>Stack Overflow 2025 调查</td>
+          <td>开发者用/计划用 AI 工具</td>
+          <td class="metric-num">84%</td>
+          <td><a class="source-link" href="https://newsletter.pragmaticengineer.com/p/ai-tooling-2026" target="_blank">Pragmatic Engineer</a></td>
+        </tr>
+        <tr>
+          <td>2026 多源平均</td>
+          <td>工程师每周节省时间</td>
+          <td class="metric-num">3.6 hrs/周<br>(20% 省 8+ hrs)</td>
+          <td><a class="source-link" href="https://www.kore1.com/ai-copilot-developer-productivity-2026/" target="_blank">KORE1</a></td>
+        </tr>
+        <tr>
+          <td>Gartner 2026-04</td>
+          <td>有 AI 相关裁员计划的公司比例</td>
+          <td class="metric-num">仅 31%<br>（且大多 2027 才执行）</td>
+          <td><a class="source-link" href="https://www.duperrin.com/english/2026/05/13/cloudflare-ai-layoffs/" target="_blank">Duperrin</a></td>
+        </tr>
+        <tr>
+          <td>Klarna</td>
+          <td>AI 客服替代客服岗（已部分回滚）</td>
+          <td class="metric-num">~700 岗位</td>
+          <td><a class="source-link" href="https://www.flexos.work/learn/klarna-replaces-700-roles-ai-leaders-approach-ai-workforce-planning" target="_blank">FlexOS</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ════ Section 5: 对滴滴的启示 ════ -->
+  <div class="section" id="sec-didi">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--didi-red-bg)">🎯</div>
+      <h2>本周对滴滴的启示</h2>
+      <span class="count">3 条</span>
+    </div>
+
+    <div class="verdict">
+      <h3>核心结论</h3>
+      <p>本周 5 个案例 + 4 个方法论碎片让"<strong class="highlight">AI Champion 虚拟组织</strong>"这件事变得有明确参照系。<strong>Citi 是路径模板，Box 是叙事模板，Klarna/Duolingo 是避坑模板</strong>，Shopify 是部分可移植的工具。最终建议——<strong class="highlight">Citi 结构 + Box 叙事</strong>。</p>
+
+      <div class="action-item">
+        <p><span class="action-num">① </span><strong>Champion 网络设计就走 Citi 双层金字塔结构</strong>——上层 20-30 名核心 Champion（兼职但有指定时间投入），下层目标 200-300 名 Accelerator（志愿制，无 KPI 绑定）。激励靠"提前用上工具 + 培训资源 + 内部影响力"——不绑定绩效。这跟 Martin doc 第四/五层的 Champion 设计直接对接。</p>
+      </div>
+
+      <div class="action-item">
+        <p><span class="action-num">② </span><strong>对内沟通采用 Box 叙事，不学 Shopify/Klarna</strong>——核心 message："AI 让团队接得动更多商家/订单，省下的人天再投资给你"。明确说"AI 不是来裁员的"。Klarna 反转后 Box 思路赢面更大；拉美用户对低质量服务的容忍度比北美低，Klarna 路径风险尤其高。</p>
+      </div>
+
+      <div class="action-item">
+        <p><span class="action-num">③ </span><strong>不要把 AI 工具采用度直接绑进 KPI</strong>——Duolingo 已经在这条边上摔过。可借鉴 Shopify 的"360 review 加 AI native 评分"作为软指标，但<strong>不要</strong>设"用不到 X 次扣绩效"这种硬考核。本周给老板汇报时可以明确："滴滴版会避开这个坑"。</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  AI 组织建设周报 · 2026.W20 · 5 月 9 - 15 日<br>
+  下期：W21（5 月 22 日周五）<br>
+  ─── 给老板的输入 + day job 研究素材 ───
+</div>
+
+<script>
+  // Scroll-spy 导航
+  const sections = document.querySelectorAll('.section[id]');
+  const navPills = document.querySelectorAll('.nav-pill');
+
+  function activateNav() {
+    let current = '';
+    const offset = 120;
+    sections.forEach(sec => {
+      if (sec.getBoundingClientRect().top <= offset) {
+        current = sec.id;
+      }
+    });
+    navPills.forEach(p => {
+      p.classList.toggle('active', p.dataset.target === current);
+    });
+  }
+  window.addEventListener('scroll', activateNav, { passive: true });
+  activateNav();
+
+  // 平滑滚动
+  navPills.forEach(p => {
+    p.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.getElementById(p.dataset.target);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
