@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Daily · 2026.05.18</title>
+<style>
+  :root {
+    --orange: #FF6611; --orange-bg: #FFF5EE;
+    --bg: #FAFAFA; --white: #FFFFFF; --text: #1A1A1A;
+    --text-secondary: #4A4A4A; --text-light: #888;
+    --border: #F0E8E2; --didi-red: #C00; --didi-red-bg: #FFEDED;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 32px 22px 60px; }
+  .hero { padding: 8px 0 24px; border-bottom: 1px solid var(--border); }
+  .hero-label {
+    display: inline-block; font-size: 11px; letter-spacing: 2px;
+    background: var(--orange); color: #fff; padding: 3px 12px; border-radius: 12px; margin-bottom: 10px;
+  }
+  .hero h1 { font-size: 22px; font-weight: 700; }
+  .hero .date { font-size: 13px; color: var(--text-light); margin-top: 4px; }
+  .alpha {
+    background: linear-gradient(135deg, var(--orange-bg) 0%, #FFF0E6 100%);
+    border-left: 4px solid var(--orange); border-radius: 0 10px 10px 0;
+    padding: 14px 16px; margin: 22px 0 28px;
+  }
+  .alpha-label {
+    font-size: 11px; letter-spacing: 1.5px; color: var(--orange); font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .alpha p { font-size: 15px; color: var(--text); line-height: 1.6; font-weight: 500; }
+  .items-label {
+    font-size: 14px; font-weight: 700; color: var(--text-light); margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .item {
+    padding: 14px 4px; border-bottom: 1px dashed var(--border);
+  }
+  .item:last-child { border-bottom: none; }
+  .item-num {
+    display: inline-block; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--orange-bg); color: var(--orange); font-size: 12px; font-weight: 700;
+    text-align: center; line-height: 22px; margin-right: 6px;
+  }
+  .item-tag {
+    display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 4px;
+    font-weight: 600; background: var(--orange-bg); color: var(--orange); margin-right: 6px;
+  }
+  .item-title { font-size: 14.5px; font-weight: 600; color: var(--text); display: inline; }
+  .item-arrow {
+    margin-top: 6px; font-size: 13px; color: var(--text-secondary);
+    padding-left: 12px; border-left: 2px solid var(--orange);
+  }
+  .item-src {
+    display: inline-block; font-size: 11.5px; color: var(--orange); text-decoration: none;
+    background: var(--orange-bg); padding: 2px 8px; border-radius: 4px; margin-top: 6px; margin-right: 4px;
+  }
+  .item-src:hover { background: #FFE5D5; }
+  .action {
+    background: var(--didi-red-bg); border: 1.5px solid #FFCCCC; border-radius: 12px;
+    padding: 16px 18px; margin-top: 28px;
+  }
+  .action-label {
+    font-size: 11px; letter-spacing: 1.5px; color: var(--didi-red); font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .action p { font-size: 14px; color: var(--text); }
+  .back {
+    display: inline-block; font-size: 12px; color: var(--text-light); text-decoration: none;
+    margin-bottom: 16px; padding: 4px 10px; border: 1px solid var(--border); border-radius: 12px;
+  }
+  .back:hover { color: var(--orange); border-color: var(--orange); }
+  .footer { font-size: 11px; color: var(--text-light); text-align: center; padding: 24px 0 0; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <a class="back" href="../index.html">← 全部</a>
+
+  <div class="hero">
+    <span class="hero-label">AI DAILY</span>
+    <h1>今日 5 件事 · 2 分钟读完</h1>
+    <div class="date">2026.05.18 · 周一</div>
+  </div>
+
+  <div class="alpha">
+    <div class="alpha-label">📌 今日 ALPHA</div>
+    <p>食品外卖正在全面接入 ChatGPT 作为新订餐入口——DoorDash / Uber Eats / Instacart 都已直接进了 ChatGPT。"打开外卖 App 选餐"可能不是未来的默认动作。</p>
+  </div>
+
+  <div class="items-label">⚡ 今日 5 件事</div>
+
+  <div class="item">
+    <span class="item-num">1</span><span class="item-tag">ChatGPT × 外卖</span>
+    <div class="item-title">DoorDash / Uber Eats / Instacart 在 ChatGPT 里直接下单</div>
+    <div class="item-arrow">→ 滴滴拉美需要尽快考虑 ChatGPT 端 distribution 路径</div>
+    <a class="item-src" href="https://www.grocerydive.com/news/chatgpt-instacart-doordash-uber-target-grocery-delivery/802554/" target="_blank">Grocery Dive ↗</a>
+  </div>
+
+  <div class="item">
+    <span class="item-num">2</span><span class="item-tag">AI 客服警示</span>
+    <div class="item-title">用户用 AI 篡改餐品照片骗退款大潮</div>
+    <div class="item-arrow">→ L4 退款 Agent 必须配图像反伪造（image forensics）能力</div>
+    <a class="item-src" href="https://www.yahoo.com/news/articles/sneaky-customers-using-ai-alter-164606086.html" target="_blank">Yahoo News ↗</a>
+  </div>
+
+  <div class="item">
+    <span class="item-num">3</span><span class="item-tag">Uber Eats</span>
+    <div class="item-title">Avride 机器人配送在 Center City 全餐厅覆盖（5/15 报道）</div>
+    <div class="item-arrow">→ 拉美自动配送参考案例</div>
+    <a class="item-src" href="https://www.inquirer.com/news/uber-eats-avride-food-delivery-expansion-20260515.html" target="_blank">Inquirer ↗</a>
+  </div>
+
+  <div class="item">
+    <span class="item-num">4</span><span class="item-tag">Anthropic</span>
+    <div class="item-title">Claude for Small Business 上线，接入 QuickBooks / HubSpot / Canva / Docusign / Google Workspace / M365</div>
+    <div class="item-arrow">→ SMB 商家 AI 工具竞争升级；外卖商家侧 B 端 AI 助手有新参照系</div>
+    <a class="item-src" href="https://releasebot.io/updates/anthropic" target="_blank">Releasebot ↗</a>
+  </div>
+
+  <div class="item">
+    <span class="item-num">5</span><span class="item-tag">资本</span>
+    <div class="item-title">Sierra 融 $950M（估值 $15B）+ Recursive Superintelligence 出 stealth 拿 $650M（Nvidia + GV）</div>
+    <div class="item-arrow">→ 企业 AI agent 战争资本充足，但还没人专攻外卖垂直</div>
+    <a class="item-src" href="https://techcrunch.com/2026/05/04/sierra-raises-950m-as-the-race-to-own-enterprise-ai-gets-serious/" target="_blank">TechCrunch ↗</a>
+  </div>
+
+  <div class="action">
+    <div class="action-label">🎯 今日行动</div>
+    <p>把第 1 条 forward 给技术负责人——问下滴滴拉美在 ChatGPT 端接入的计划/可行性。</p>
+  </div>
+
+  <div class="footer">
+    AI Daily · 2 分钟扫读 · 每日工作日发<br>
+    专注「公司怎么用 AI」周报 → <a href="build-ai-org/2026-W20.html" style="color: var(--orange);">本周 W20</a>
+  </div>
+</div>
+
+</body>
+</html>
